@@ -95,7 +95,7 @@ namespace apara
         ExprSet eqInvs;
         std::set<Expr>::iterator it1, it2;
         for (it1 = sf.learnedExprs.begin(); it1 != sf.learnedExprs.end(); ++it1) {
-          cout << "\nIT1\n"; pprint(*it1);
+          if(o.getVerbosity() > 10) cout << "\nIT1\n"; pprint(*it1);
           Expr e1 = *it1;
           if (!containsOp<FORALL>(e1)) continue;
           if (!(isOpX<IMPL>(e1->last()))) continue;
@@ -113,9 +113,9 @@ namespace apara
           result = true;
         }
         for (it1 = sf.learnedExprs.begin(); it1 != sf.learnedExprs.end(); ++it1) {
-          cout << "\nIT1\n"; pprint(*it1);
+          if(o.getVerbosity() > 10) cout << "\nIT1\n"; pprint(*it1);
           for (it2 = it1; it2 != sf.learnedExprs.end(); ++it2) {
-            cout << "\nIT2\n"; pprint(*it2);
+            if(o.getVerbosity() > 10) cout << "\nIT2\n"; pprint(*it2);
             if(it1 == it2)
               continue;
             Expr e1 = *it1, e2 = *it2;
