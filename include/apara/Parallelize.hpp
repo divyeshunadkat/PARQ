@@ -183,7 +183,7 @@ namespace apara
         else outs () << "\nPARALLELIZATION_UNKNOWN(1)\n";
         return rks;
       } else {
-        if(bs) learnInvs();
+        if(!bs) learnInvs();
         bool ei = getEqualityInvs();
         if(ei) {
           outs () << "\nPARALLELIZATION_BY_EQ_INVS_SUCCESSFUL\n";
