@@ -2,14 +2,14 @@
 #define __LEARNER_HPP
 
 #include <fstream>
-#include "apara/Options.hpp"
+#include "parq/Options.hpp"
 #include "deep/RndLearnerV2.hpp"
 #include "deep/RndLearnerV3.hpp"
 
 using namespace std;
 using namespace ufo;
 
-namespace apara
+namespace parq
 {
   class Learner : public RndLearnerV3
   {

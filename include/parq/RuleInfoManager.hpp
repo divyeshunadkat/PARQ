@@ -1,13 +1,13 @@
 #ifndef __RULEINFOMANAGER_HPP
 #define __RULEINFOMANAGER_HPP
 
-#include "apara/Options.hpp"
+#include "parq/Options.hpp"
 #include "deep/Horn.hpp"
 
 using namespace std;
 using namespace ufo;
 
-namespace apara
+namespace parq
 {
   class RuleInfoManager
   {

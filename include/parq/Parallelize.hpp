@@ -2,15 +2,15 @@
 #define __PARALLELIZE_HPP
 
 #include <fstream>
-#include "apara/Options.hpp"
-#include "apara/Learner.hpp"
-#include "apara/RuleInfoManager.hpp"
-#include "apara/KSynthesizer.hpp"
+#include "parq/Options.hpp"
+#include "parq/Learner.hpp"
+#include "parq/RuleInfoManager.hpp"
+#include "parq/KSynthesizer.hpp"
 
 using namespace std;
 using namespace ufo;
 
-namespace apara
+namespace parq
 {
   class Parallelize
   {

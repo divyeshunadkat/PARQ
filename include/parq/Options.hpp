@@ -5,7 +5,7 @@
 #include <iostream>
 #include <vector>
 
-namespace apara {
+namespace parq {
 
   using namespace std;
 
@@ -20,7 +20,7 @@ namespace apara {
     int verbosity = 0;
     int printLog = 0;
     string version = "1.0";
-    string toolName = "apara";
+    string toolName = "parq";
 
   public:
     inline string getInputFile() { return inputFilePath; }

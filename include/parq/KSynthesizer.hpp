@@ -1,16 +1,16 @@
 #ifndef __KSYNTHESIZER_HPP
 #define __KSYNTHESIZER_HPP
 
-#include "apara/Options.hpp"
+#include "parq/Options.hpp"
 #include "deep/Horn.hpp"
 #include "ae/SMTUtils.hpp"
-#include "apara/RuleInfoManager.hpp"
-#include "apara/Learner.hpp"
+#include "parq/RuleInfoManager.hpp"
+#include "parq/Learner.hpp"
 
 using namespace std;
 using namespace ufo;
 
-namespace apara
+namespace parq
 {
   class KSynthesizer
   {
@@ -127,7 +127,7 @@ namespace apara
     {
       if(o.getVerbosity() > 1) outs () << "\nCheck for overlap in array indices\n";
       bool result = false;
-      Expr CVar = bind::intConst(mkTerm<string> ("_APARA_C_", m_efac));
+      Expr CVar = bind::intConst(mkTerm<string> ("_PARQ_C_", m_efac));
       map<Expr, ExprVector>::iterator itst  = rim.getAllArrStoreAccess()[invNum].begin();
       map<Expr, ExprVector>::iterator itsel = rim.getAllArrSelectAccess()[invNum].begin();
       while (itst != rim.getAllArrStoreAccess()[invNum].end()) {
@@ -238,10 +238,10 @@ namespace apara
     bool encode(const int invNum, ExprVector& res)
     {
       if(o.getVerbosity() > 1) outs () << "\nEncoding the constraints for K Synthesis\n";
-      Expr k1Var = bind::intConst(mkTerm<string> ("_APARA_K1_", m_efac));
-      Expr k2Var = bind::intConst(mkTerm<string> ("_APARA_K2_", m_efac));
-      Expr k3Var = bind::intConst(mkTerm<string> ("_APARA_K3_", m_efac));
-      Expr k4Var = bind::intConst(mkTerm<string> ("_APARA_K4_", m_efac));
+      Expr k1Var = bind::intConst(mkTerm<string> ("_PARQ_K1_", m_efac));
+      Expr k2Var = bind::intConst(mkTerm<string> ("_PARQ_K2_", m_efac));
+      Expr k3Var = bind::intConst(mkTerm<string> ("_PARQ_K3_", m_efac));
+      Expr k4Var = bind::intConst(mkTerm<string> ("_PARQ_K4_", m_efac));
       Expr igeqk3 = mk<GEQ>(my_qvits[invNum].front()->iter, k3Var);
       Expr iltk4 = mk<LT>(my_qvits[invNum].front()->iter, k4Var);
       if(o.getVerbosity() > 1) outs () << "\nEncoding of i >= k3\n" << *igeqk3 << "\n";
@@ -519,9 +519,9 @@ namespace apara
       Expr prerange, postrange;
       genIteratorRanges(invNum, prerange, postrange);
       Expr iterrange = conjoinRanges(prerange, postrange);
-      Expr kVar = bind::intConst(mkTerm<string> ("_APARA_K_", m_efac));
+      Expr kVar = bind::intConst(mkTerm<string> ("_PARQ_K_", m_efac));
       Expr ksrange = replaceAll(iterrange, my_qvits[invNum].front()->iter, kVar);
-      Expr qVar = bind::intConst(mkTerm<string> ("_APARA_arr_it_", m_efac));
+      Expr qVar = bind::intConst(mkTerm<string> ("_PARQ_arr_it_", m_efac));
       // Expr e0 = replaceAll(conjoin(consMap[0], m_efac), my_qvits[invNum].front()->iter, qVar);
       // Expr e1 = replaceAll(conjoin(consMap[1], m_efac), my_qvits[invNum].front()->iter, qVar);
       // Expr e2 = replaceAll(conjoin(consMap[2], m_efac), my_qvits[invNum].front()->iter, qVar);

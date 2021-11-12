@@ -1,1 +1,1 @@
-add_subdirectory(apara)
+add_subdirectory(parq)

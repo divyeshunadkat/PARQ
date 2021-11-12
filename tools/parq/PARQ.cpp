@@ -1,9 +1,9 @@
-#include "apara/Options.hpp"
-#include "apara/Parallelize.hpp"
+#include "parq/Options.hpp"
+#include "parq/Parallelize.hpp"
 
 using namespace std;
 using namespace ufo;
-using namespace apara;
+using namespace parq;
 
 int main (int argc, char ** argv) {
   Options o;
