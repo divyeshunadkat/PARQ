@@ -1,24 +1,26 @@
 PARQ
 ====
 
+PARQ is an automatic parallelization engine for array modifying programs specified as a CHC system of constraints.
 
 Installation
 ============
 
-Compiles with gcc-7 (on Linux) and clang-1001 (on Mac). Assumes preinstalled <a href="https://gmplib.org/">GMP</a>, and Boost (libboost-system1.74-dev) packages. Additionally, armadillo package to get candidates from behaviors. 
+Compiles with gcc-7 (on Linux) and clang-1001 (on Mac). Requires <a href="https://gmplib.org/">GMP</a>, and <a href="https://www.boost.org/">Boost</a> and <a href="http://arma.sourceforge.net/">armadillo</a> packages to be pre-installed.
 
-* `cd aeval ; mkdir build ; cd build`
+* `cd parq ; mkdir build ; cd build`
 * `cmake ../`
 * `make` to build dependencies (Z3)
 * `make` (again) to build PARQ
 
 The binary of PARQ can be found at `build/tools/parq/`.
-Run `parq --help` for the usage info.
 
-The tools print `Success ...` if the system is parallelizable.
+Run `parq --h` for the usage information.
+
+The tool prints `Success ...` if the system is parallelizable.
 
 Benchmarks
 ==========
 
-Collection of the SMT-LIB2 translations of the CHC systems can be found at `bench_parq`. PARQQ is expected to parallelize these systems. 
+PARQ is expected to parallelize the SMT-LIB2 translations of the CHC systems in `bench_parq`.
 

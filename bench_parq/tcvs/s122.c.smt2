@@ -1,0 +1,46 @@
+(declare-rel loop ((Array Int Int) (Array Int Int) Int Int Int ))
+(declare-rel exit ())
+(declare-var i Int )
+(declare-var i1 Int )
+(declare-var k Int )
+(declare-var k1 Int )
+(declare-var index_limit Int )
+(declare-var a_i Int )
+(declare-var a_i_curr Int )
+(declare-var b_elem Int )
+(declare-var b_ind Int )
+(declare-var count Int )
+(declare-var a_array (Array Int Int) )
+(declare-var a_array_new (Array Int Int) )
+(declare-var b_array (Array Int Int) )
+
+(rule (=> 
+	(and 
+		(= index_limit (* count 8))
+		(= i 1)
+		(= k 0)
+	)
+	(loop a_array b_array i k index_limit)
+))
+(rule (=> 
+	(and 
+		(loop a_array b_array i k index_limit)
+		(< i index_limit)
+		(= k1 (+ k 1))
+		(= b_ind (- index_limit k1))
+		(= b_elem (select b_array b_ind))
+		(= a_i_curr (select a_array i))
+		(= a_i (+ b_elem a_i_curr))
+		(= a_array_new (store a_array i a_i))
+		(= i1 (+ i 1))
+	)
+	(loop a_array_new b_array i1 k1 index_limit)
+))
+(rule (=> 
+	(and 
+		(loop a_array b_array i k index_limit)
+		(not (< i index_limit))
+	)
+	exit
+))
+(query exit)
